@@ -848,3 +848,17 @@ a:hover { color: var(--flame); }
   color: var(--faint);
 }
 .backcover .grain { opacity: .16; }
+
+/* phones: blend-mode overlays + stacked 3D layers blow WebKit's memory
+   budget and crash the tab, so swap the flip for a plain page switch */
+@media (max-width: 700px) {
+  .grain, .bc-scanlines { display: none; }
+  .book { perspective: none; }
+  .page { transition: none; }
+  .page.flipped {
+    transform: none;
+    visibility: hidden;
+  }
+  .face { box-shadow: 0 12px 30px rgba(0, 0, 0, .5); }
+  .face.rear { display: none; }
+}

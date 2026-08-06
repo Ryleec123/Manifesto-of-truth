@@ -56,7 +56,7 @@
 
   // shrink the whole book on narrow windows
   function fit() {
-    var s = Math.min(1, (window.innerWidth - 48) / 1240);
+    var s = Math.min(1, Math.max(0.15, (window.innerWidth - 48) / 1240));
     book.style.transform = 'scale(' + s + ')';
     stage.style.height = Math.ceil(900 * s) + 'px';
   }
